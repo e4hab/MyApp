@@ -19,11 +19,17 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Install Gradle
-        uses: gradle/gradle-build-action@v2
+      - name: Install Gradle 7.6
+        run: |
+          wget https://services.gradle.org/distributions/gradle-7.6-bin.zip
+          unzip gradle-7.6-bin.zip
+          export PATH=$PWD/gradle-7.6/bin:$PATH
+          gradle -v
 
       - name: Build APK
-        run: gradle assembleDebug
+        run: |
+          export PATH=$PWD/gradle-7.6/bin:$PATH
+          gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
