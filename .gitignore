@@ -1,0 +1,9 @@
+.gradle/
+build/
+local.properties
+*.zip
+*.jar.gradle/
+build/
+local.properties
+*.zip
+*.jar
